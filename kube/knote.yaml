@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: knote
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: knote
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: knote
-          image: sumeesh/knote-js:1.0.0
+          image: sumeesh/k8s-note:1.0.0
           ports:
             - containerPort: 3000
           env:

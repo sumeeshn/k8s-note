@@ -34,19 +34,13 @@ async function start() {
   app.set('views', path.join(__dirname, 'views'))
   app.use(express.static(path.join(__dirname, 'public')))
 
-  app.get('/version', (req, res) => {
-    res.json({
-      version: "1.0.0"
-    })
-  })
-
   app.get('/crash', (req, res) => {
     console.log('crashing');
     process.exit(0)
   })
 
   app.get('/', async (req, res) => {
-    res.render('index', { notes: await retrieveNotes(db) })
+    res.render('index', { notes: await retrieveNotes(db), version: '2.0.0' })
   })
 
   app.post(
